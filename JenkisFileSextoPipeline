@@ -1,0 +1,34 @@
+pipeline{
+    agent any
+    environment{
+        EMAIL="JUANCARLOS.RUAR@GMAIL.COM"
+    }
+    stages{
+        stage("Saludos 1"){
+            steps{
+                echo "Hola desde saludo 1"
+            }
+        }
+        
+        stage("Saludos 2"){
+            steps{
+                echo "Hola desde saludo 2, paso 1"
+                echo "Hola desde saludo 2, paso 2"
+            }
+        }
+        stage("Imprimir variable de entorno"){
+            steps{
+                echo "${env.EMAIL}"
+                echo "${EMAIL}"
+                echo "$EMAIL"
+            }
+        }
+        stage("Imprimir variable de entorno definida en System"){
+            steps{
+                echo "${GMAIL}"
+                sh "echo ${GMAIL}"
+                
+            }
+        }
+    }
+}
